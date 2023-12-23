@@ -47,7 +47,7 @@
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="fa fa-user text-warning"></i> Angel Torres Salazar
+            <i class="fa fa-user text-warning"></i> Hackers de Medianoche
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item text-sm"><i class="fas fa-user-cog text-primary"></i> Perfil</a>
@@ -198,7 +198,7 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <h5 class="m-0">Categorías <button class="btn btn-primary" data-toggle="modal"
+                  <h5 class="m-0">Infracciones <button class="btn btn-primary" data-toggle="modal"
                       data-target="#modal-update" id="nuevo"><i class="fas fa-file"></i> Nuevo</button> <a href=""
                       class="btn btn-success"><i class="fas fa-file-csv"></i> CSV</a></h5>
                 </div>
@@ -208,12 +208,12 @@
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Placa</th>
-                          <th>Dni</th>
-                          <th>Infraccion</th>
+                          <th>DNI</th>
                           <th>Fecha</th>
+                          <th>Placa</th>
+                          <th>Infracción</th>
+                          <th>Descripción</th>
                           <th>Opciones</th>
-                            
                         </tr>
                       </thead>
                       <tbody>
@@ -242,16 +242,24 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="descripcion">descripcion</label>
-                <input type="text" class="form-control" id="descripcion" placeholder="Ingrese descripcion">
-                <label for="placa">Dni</label>
-                <input type="text" class="form-control" id="dni" placeholder="Ingrese dni">
-                <label for="fecha">fecha</label>
-                <input type="date" class="form-control" id="fecha" placeholder="Ingrese fecha">
-                <label for="infraccion">infraccion</label>
-                <input type="text" class="form-control" id="infraccion" placeholder="Ingrese infraccion">
-                 <label for="placa">Placa</label>
-                <input type="text" class="form-control" id="placa" placeholder="Ingrese placa">
+                <label for="dni">DNI</label>
+                <input type="email" class="form-control" id="dni" placeholder="Ingrese DNI">
+              </div>
+              <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="date" class="form-control" id="fecha" placeholder="Ingrese Fecha">
+              </div>
+              <div class="form-group">
+                <label for="placa">Placa</label>
+                <input type="email" class="form-control" id="placa" placeholder="Ingrese Placa">
+              </div>
+              <div class="form-group">
+                <label for="infraccion">Infracción</label>
+                <input type="email" class="form-control" id="infraccion" placeholder="Ingrese Infracción">
+              </div>
+              <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <input type="email" class="form-control" id="descripcion" placeholder="Ingrese Descripción">
               </div>
               <div class="form-group">
                 <button type="button" class="btn btn-primary" id="guardar">Guardar</button>

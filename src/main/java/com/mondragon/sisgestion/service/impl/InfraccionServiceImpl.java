@@ -1,4 +1,4 @@
-package com.mondragon.sisgestion.service.imp;
+package com.mondragon.sisgestion.service.impl;
 
 import java.util.List;
 
@@ -6,23 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mondragon.sisgestion.entity.Infracciones;
+import com.mondragon.sisgestion.entity.Infraccion;
 import com.mondragon.sisgestion.repository.InfraccionRepository;
 import com.mondragon.sisgestion.service.InfraccionService;
-
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class InfraccionServiceImp implements InfraccionService {
-
+public class InfraccionServiceImpl implements InfraccionService{
 	@Autowired
 	private InfraccionRepository repository;
-
+	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Infracciones> findAll() {
+	public List<Infraccion> finAll() {
 		try {
 			return repository.findAll();
 		} catch (Exception e) {
@@ -33,47 +31,50 @@ public class InfraccionServiceImp implements InfraccionService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Infracciones findById(int id) {
+	public Infraccion findById(int id) {
 		try {
 			return repository.findById(id).orElse(null);
 		} catch (Exception e) {
-			//log.error(e.getMessage());
+			log.error(e.getMessage());
 			throw e;
 		}
 	}
-	
 
 	@Override
 	@Transactional(readOnly = true)
-	public Infracciones findByPlaca(String placa) {
+	public Infraccion findByDni(String dni) {
 		try {
-			return repository.findByPlaca(placa);
+			return repository.findByDni(dni);
 		} catch (Exception e) {
-			//log.error(e.getMessage());
+			log.error(e.getMessage());
 			throw e;
 		}
 	}
 
 	@Override
 	@Transactional
-	public Infracciones create(Infracciones obj) {
+	public Infraccion create(Infraccion obj) {
 		try {
 			return repository.save(obj);
 		} catch (Exception e) {
-			//log.error(e.getMessage());
+			log.error(e.getMessage());
 			throw e;
 		}
 	}
 
 	@Override
-	public Infracciones update(Infracciones obj) {
+	public Infraccion update(Infraccion obj) {
 		try {
-			Infracciones infra=findById(obj.getId());
-			infra.setDescripcion(obj.getDescripcion());
+			Infraccion infraccionDb=findById(obj.getId());
+			infraccionDb.setDni(obj.getDni());
+			infraccionDb.setFecha(obj.getFecha());
+			infraccionDb.setPlaca(obj.getPlaca());
+			infraccionDb.setInfraccion(obj.getInfraccion());
+			infraccionDb.setDescripcion(obj.getDescripcion());
 			
-			return repository.save(infra);
+			return repository.save(infraccionDb);
 		} catch (Exception e) {
-			//log.error(		e.getMessage());
+			log.error(e.getMessage());
 			throw e;
 		}
 	}
@@ -81,18 +82,17 @@ public class InfraccionServiceImp implements InfraccionService {
 	@Override
 	public int delete(int id) {
 		try {
-			Infracciones infra=findById(id);
-			if(infra==null) {
+			Infraccion infraccionDb=findById(id);
+			if(infraccionDb==null) {
 				return 0;
 			}else {
-				repository.delete(infra);
+				repository.delete(infraccionDb);
 				return 1;
 			}
 		} catch (Exception e) {
-			//log.error(e.getMessage());
+			log.error(e.getMessage());
 			throw e;
 		}
 	}
-
 
 }
